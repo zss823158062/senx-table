@@ -1,15 +1,15 @@
 # senx-table
 # 微信小程序 表格组件
+
+```text
 基于https://github.com/muzixiaojun/lrjTable 组件做的优化、修改；支持动态调整列宽，首列冻结、操作列冻结；左右滑动；按钮优化；表头固定；
 slot action 固定按钮操作
- btnName 按钮名
+btnName 按钮名
 valueCallback 按钮返回值 如不设置则返回所在行索引和当前行数据
- 按钮绑定事件 btnClick
-
- tr绑定事件 onRowClick
- valueCallback tr返回值 如不设置则返回所在行索引和当前行数据
-
- columns 数组 {
+按钮绑定事件 btnClick
+tr绑定事件 onRowClick
+valueCallback tr返回值 如不设置则返回所在行索引和当前行数据
+columns 数组 {
       key: '',
       title: '',
       width: 200,
@@ -20,6 +20,7 @@ valueCallback 按钮返回值 如不设置则返回所在行索引和当前行�
       valueCallback: '',
       btnName: ''
     }
+```
 # 使用方法
 1、引入 首先在要使用的页面中的json文件中配置如下：
 ```json
