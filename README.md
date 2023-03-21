@@ -22,7 +22,7 @@ valueCallback 按钮返回值 如不设置则返回所在行索引和当前行�
     }
 # 使用方法
 1、引入 首先在要使用的页面中的json文件中配置如下：
-```
+```json
 {
   "usingComponents": {
     "s-table": "/components/senx-table/senx-table"
@@ -30,7 +30,7 @@ valueCallback 按钮返回值 如不设置则返回所在行索引和当前行�
 }
 ```
 2、使用 在wxml页面需要用到的地方使用，如下：
-```
+```xml
 <s-table columns="{{orderLinesData.columns}}" data="{{orderLinesData.data}}" height="500" marginTopValues="2"
          isScrollX bindbtnClick='orderLineDeleteBtnClick' bindrowClick='orderLineRowClick'/>
 ```
