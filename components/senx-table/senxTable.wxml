@@ -1,0 +1,35 @@
+<scroll-view scroll-x="{{isScrollX}}" scroll-y enable-flex="true" class="table" style="padding-top: {{marginTopValue}}rpx;height: {{height ? height + 'rpx': 'auto'}};">
+    <view>
+        <view class="thead {{isBorder ? 'thead-border' : ''}} {{isFixedFistColumn ? 'fixedFirstCol': ''}} {{isOperation ? 'fixedLastCol': ''}} thead-row-class"
+              style="display:{{isScrollX ? 'inline-block': 'flex'}};position: {{isFixed ? 'static': 'sticky' }} ">
+            <view class="td " wx:for="{{columns}}" wx:key="index"
+                  style="width: {{item.width ? item.width : 200}}rpx; text-align: {{item.align ? item.align : 'center'}};">
+                {{item.title}}
+            </view>
+        </view>
+        <view class="tbody">
+            <block wx:for="{{data}}" wx:key="index" wx:for-index="dataIndex" wx:if="{{data.length > 0}}">
+                <view class="tbody-tr {{ isStripe ? 'tbody-tr-stripe' : '' }} {{ isBorder ? 'tbody-tr-border' : ''}} {{isFixedFistColumn ? 'fixedFirstCol': ''}} {{isOperation ? 'fixedLastCol': ''}} tbody-tow-class"
+                      style="display:{{isScrollX ? 'inline-flex': 'flex'}}">
+                    <view id="tableRow" class="td td-class" wx:for-item="thead" wx:key="key" wx:for-index="columnIndex" wx:for="{{columns}}"
+                          style="width: {{thead.width?thead.width:200}}rpx; text-align:{{item.align ? thead.align : 'center'}};display:{{isScrollX ? 'inline-flex': 'flex'}};"
+                          data-value="{{valueCallback ? item[valueCallback]: ({index:dataIndex,item:item})}}"
+                          bindtap="onRowClick">
+                        {{item[thead['key']]}}
+                        <button id="slotBtn" wx:if="{{thead.slot}}" class='btn' plain="true" size='mini'
+                                data-value="{{item.valueCallback ? item[valueCallback]: ({index:dataIndex,item:item})}}" bindtap="onBtnClick">
+                            {{thead.btnName}}
+                        </button>
+                    </view>
+                </view>
+            </block>
+            <block wx:if="{{data.length === 0}}">
+                <view class="no-data">
+                    {{msg}}
+                </view>
+            </block>
+        </view>
+    </view>
+
+</scroll-view>
+<slot></slot>
